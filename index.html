@@ -14,8 +14,16 @@
       </form>
       <ul>
         <li v-for="todo in todos" :key="todo.id">
-          {{ todo.text }}
-          <button @click="removeTodo(todo)">X</button>
+          <input
+            v-if="todo === editedTodo"
+            v-model="todo.text"
+            @blur="doneEdit(todo)"
+            @keyup.enter="doneEdit(todo)"
+          />
+          <label v-else>{{ todo.text }}</label>
+          <button @click="doneEdit(todo)" v-if="todo === editedTodo">確定</button>
+          <button @click="editTodo(todo)" v-else>編集</button>
+          <button @click="removeTodo(todo)">削除</button>
         </li>
       </ul>
     </div>

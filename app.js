@@ -7,6 +7,7 @@ createApp({
     return {
       newTodo: "",
       todos: [],
+      editedTodo: null,
     };
   },
   methods: {
@@ -16,6 +17,16 @@ createApp({
     },
     removeTodo(todo) {
       this.todos = this.todos.filter((t) => t !== todo);
+    },
+    editTodo(todo) {
+      this.editedTodo = todo;
+    },
+    doneEdit(todo) {
+      this.editedTodo = null;
+      todo.text = todo.text.trim();
+      if (!todo.text) {
+        this.removeTodo(todo);
+      }
     },
   },
 }).mount("#app");
