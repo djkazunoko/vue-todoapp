@@ -8,8 +8,8 @@ ul {
   text-decoration: line-through;
 }
 .filters li {
-	display: inline;
+  display: inline;
 }
 .filters li button.selected {
-	border-color: #CE4646;
+  border-color: #ce4646;
 }

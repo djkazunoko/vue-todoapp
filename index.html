@@ -15,7 +15,7 @@
       </form>
       <ul>
         <li v-for="todo in filteredTodos" :key="todo.id">
-          <input type="checkbox" v-model="todo.done">
+          <input type="checkbox" v-model="todo.done" />
           <input
             v-if="todo === editedTodo"
             v-model="todo.text"
@@ -23,20 +23,37 @@
             @keyup.enter="doneEdit(todo)"
           />
           <label v-else :class="{ done: todo.done }">{{ todo.text }}</label>
-          <button @click="doneEdit(todo)" v-if="todo === editedTodo">確定</button>
+          <button @click="doneEdit(todo)" v-if="todo === editedTodo">
+            確定
+          </button>
           <button @click="editTodo(todo)" v-else>編集</button>
           <button @click="removeTodo(todo)">削除</button>
         </li>
       </ul>
       <ul class="filters">
         <li>
-          <button @click="changeVisibility('all')" :class="{ selected: visibility === 'all' }">すべて</button>
+          <button
+            @click="changeVisibility('all')"
+            :class="{ selected: visibility === 'all' }"
+          >
+            すべて
+          </button>
         </li>
         <li>
-          <button @click="changeVisibility('active')" :class="{ selected: visibility === 'active' }">作業中</button>
+          <button
+            @click="changeVisibility('active')"
+            :class="{ selected: visibility === 'active' }"
+          >
+            作業中
+          </button>
         </li>
         <li>
-          <button @click="changeVisibility('done')" :class="{ selected: visibility === 'done' }">完了</button>
+          <button
+            @click="changeVisibility('done')"
+            :class="{ selected: visibility === 'done' }"
+          >
+            完了
+          </button>
         </li>
       </ul>
     </div>
