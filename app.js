@@ -13,7 +13,7 @@ createApp({
   },
   methods: {
     addTodo() {
-      this.todos.push({ id: id++, text: this.newTodo });
+      this.todos.push({ id: id++, text: this.newTodo, done: false });
       localStorage.setItem(STORAGE_KEY, JSON.stringify(this.todos));
       this.newTodo = "";
     },
