@@ -13,7 +13,7 @@ createApp({
     return {
       newTodo: "",
       todos: JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]"),
-      editedTodo: null,
+      editingTodo: null,
       visibility: "all",
     };
   },
@@ -33,10 +33,10 @@ createApp({
       localStorage.setItem(STORAGE_KEY, JSON.stringify(this.todos));
     },
     editTodo(todo) {
-      this.editedTodo = todo;
+      this.editingTodo = todo;
     },
     doneEdit(todo) {
-      this.editedTodo = null;
+      this.editingTodo = null;
       todo.text = todo.text.trim();
       localStorage.setItem(STORAGE_KEY, JSON.stringify(this.todos));
       if (!todo.text) {

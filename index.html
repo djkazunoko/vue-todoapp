@@ -17,13 +17,13 @@
         <li v-for="todo in filteredTodos" :key="todo.id">
           <input type="checkbox" v-model="todo.done" />
           <input
-            v-if="todo === editedTodo"
+            v-if="todo === editingTodo"
             v-model="todo.text"
             @blur="doneEdit(todo)"
             @keyup.enter="doneEdit(todo)"
           />
           <label v-else :class="{ done: todo.done }">{{ todo.text }}</label>
-          <button @click="doneEdit(todo)" v-if="todo === editedTodo">
+          <button @click="doneEdit(todo)" v-if="todo === editingTodo">
             確定
           </button>
           <button @click="editTodo(todo)" v-else>編集</button>
