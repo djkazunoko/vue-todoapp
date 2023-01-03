@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ToDoアプリ</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <form @submit.prevent="addTodo">
+        <input v-model="newTodo" />
+        <button>登録</button>
+      </form>
+      <ul>
+        <li v-for="todo in filteredTodos" :key="todo.id">
+          <input type="checkbox" v-model="todo.done" />
+          <input
+            v-if="todo === editingTodo"
+            v-model="todo.text"
+            @blur="doneEdit(todo)"
+            @keyup.enter="doneEdit(todo)"
+          />
+          <label v-else :class="{ done: todo.done }">{{ todo.text }}</label>
+          <button @click="doneEdit(todo)" v-if="todo === editingTodo">
+            確定
+          </button>
+          <button @click="editTodo(todo)" v-else>編集</button>
+          <button @click="removeTodo(todo)">削除</button>
+        </li>
+      </ul>
+      <ul class="filters">
+        <li>
+          <button
+            @click="changeVisibility('all')"
+            :class="{ selected: visibility === 'all' }"
+          >
+            すべて
+          </button>
+        </li>
+        <li>
+          <button
+            @click="changeVisibility('active')"
+            :class="{ selected: visibility === 'active' }"
+          >
+            作業中
+          </button>
+        </li>
+        <li>
+          <button
+            @click="changeVisibility('done')"
+            :class="{ selected: visibility === 'done' }"
+          >
+            完了
+          </button>
+        </li>
+      </ul>
+    </div>
+    <script type="module" src="app.js"></script>
+  </body>
+</html>

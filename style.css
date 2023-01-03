@@ -1,0 +1,15 @@
+button {
+  margin: 5px;
+}
+ul {
+  padding: 0;
+}
+.done {
+  text-decoration: line-through;
+}
+.filters li {
+  display: inline;
+}
+.filters li button.selected {
+  border-color: #ce4646;
+}
